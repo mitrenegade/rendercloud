@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RenderCloud_Example' do
+  pod 'RenderCloud', :path => '../'
+
+  target 'RenderCloud_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
