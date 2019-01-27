@@ -29,7 +29,7 @@ This pod allows any RenderApps pod to include FirebaseAPIService and the protoco
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
-
+  s.static_framework = true
   s.source_files = 'RenderCloud/Classes/**/*'
   
   # s.resource_bundles = {
