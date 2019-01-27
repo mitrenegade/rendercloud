@@ -12,6 +12,8 @@ fileprivate let API_VERSION: String = "1.1"
 
 public protocol CloudAPIService {
     func cloudFunction(functionName: String, method: String, params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?)
+    func getUniqueId(completion: @escaping ((String?)->()))
+    func uniqueId() -> String
 }
 
 public class FirebaseAPIService: NSObject, CloudAPIService {
@@ -25,8 +27,8 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
         urlSession = URLSession(configuration: .default)
     }
     
-    public class func getUniqueId(completion: @escaping ((String?)->())) {
-        FirebaseAPIService().cloudFunction(functionName: "getUniqueId", params: nil) { (result, error) in
+    public func getUniqueId(completion: @escaping ((String?)->())) {
+        cloudFunction(functionName: "getUniqueId", params: nil) { (result, error) in
             guard let result = result as? [String: String], let id = result["id"] else {
                 completion(nil)
                 return
@@ -35,7 +37,7 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
         }
     }
     
-    public class func uniqueId() -> String {
+    public func uniqueId() -> String {
         // generates a unique id very similar to server's unique id, but doesn't make so many requests. matches API 1.1
         let secondsSince1970 = Int(Date().timeIntervalSince1970)
         let randomId = Int(arc4random_uniform(UInt32(899999))) + 100000
