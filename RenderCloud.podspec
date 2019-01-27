@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RenderCloud'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of RenderCloud.'
+  s.version          = '0.0.1'
+  s.summary          = 'A pod solely to abstract FirebaseAPIServices'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,17 +18,17 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+This pod allows any RenderApps pod to include FirebaseAPIService and the protocol CloudService
                        DESC
 
-  s.homepage         = 'https://github.com/Bobby Ren/RenderCloud'
+  s.homepage         = 'https://bitbucket.org/renderapps/rendercloud'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Bobby Ren' => 'bobby_ren@comcast.com' }
-  s.source           = { :git => 'https://github.com/Bobby Ren/RenderCloud.git', :tag => s.version.to_s }
+  s.author           = { 'Bobby Ren' => 'bobby@renderapps.io' }
+  s.source           = { :git => 'git@bitbucket.org:renderapps/rendercloud.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'RenderCloud/Classes/**/*'
   
