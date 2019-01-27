@@ -22,7 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseAPIService.baseURL = URL(string: baseUrl)
         
         FirebaseAPIService.getUniqueId { (id) in
-            print("UniqueId generated from cloud: \(String(describing: id))")
+            guard let id = id else {
+                assertionFailure("ID generation failed!")
+                return
+            }
+            print("UniqueId generated from cloud: \(id)")
+            FirebaseAPIService().cloudFunction(functionName: "sampleCloudFunction", params: ["uid": id, "email": "test@gmail.com"]) { (result, error) in
+                print("Result \(String(describing: result)) error \(String(describing: error))")
+            }
         }
         
         return true
