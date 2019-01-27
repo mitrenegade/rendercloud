@@ -26,8 +26,7 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
     }
     
     public class func getUniqueId(completion: @escaping ((String?)->())) {
-        let method = "POST"
-        FirebaseAPIService().cloudFunction(functionName: "getUniqueId", method: method, params: nil) { (result, error) in
+        FirebaseAPIService().cloudFunction(functionName: "getUniqueId", params: nil) { (result, error) in
             guard let result = result as? [String: String], let id = result["id"] else {
                 completion(nil)
                 return
@@ -41,21 +40,6 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
         let secondsSince1970 = Int(Date().timeIntervalSince1970)
         let randomId = Int(arc4random_uniform(UInt32(899999))) + 100000
         return "\(secondsSince1970)-\(randomId)"
-    }
-    
-    private func test() {
-        let urlString = "https://us-central1-balizinha-dev.cloudfunctions.net/testFunction"
-        guard let requestUrl = URL(string:urlString) else { return }
-        var request = URLRequest(url:requestUrl)
-        
-        let params = ["uid": "123", "email": "test@gmail.com"]
-        request.httpMethod = "POST"
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        
-        try! request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-        
-        let task = URLSession.shared.dataTask(with: request)
-        task.resume()
     }
     
     public func cloudFunction(functionName: String, method: String = "POST", params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?) {

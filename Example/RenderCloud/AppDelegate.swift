@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RenderCloud
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
+        FirebaseAPIService.baseURL = URL(string: baseUrl)
+        
+        FirebaseAPIService.getUniqueId { (id) in
+            print("UniqueId generated from cloud: \(String(describing: id))")
+        }
+        
         return true
     }
 
