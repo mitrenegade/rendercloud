@@ -54,17 +54,13 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
         request.httpMethod = method
         request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
         
-        var body: [String: Any]? = params
-        if body == nil {
-            body = ["apiVersion": API_VERSION]
-        } else {
-            body?["apiVersion"] = API_VERSION
-        }
+        var body: [String: Any] = params ?? [:]
+        body["apiVersion"] = API_VERSION
         
         do {
             try request.httpBody = JSONSerialization.data(withJSONObject: body, options: [])
         } catch let error {
-            print("FirebaseAPIService: cloudFunction could not serialize params: \(params) with error \(error)")
+            print("FirebaseAPIService: cloudFunction could not serialize params: \(String(describing: params)) with error \(error)")
         }
         
         dataTask = urlSession?.dataTask(with: request) { data, response, error in
@@ -84,9 +80,9 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
                         completion?(json, nil)
                     }
                 } catch let error {
-                    print("FirebaseAPIService \(url.absoluteString ?? ""): JSON parsing resulted in code \(statusCode) error \(error)")
+                    print("FirebaseAPIService \(url.absoluteString): JSON parsing resulted in code \(statusCode) error \(error)")
                     let dataString = String.init(data: usableData, encoding: .utf8)
-                    print("StripeService: try reading data as string: \(dataString)")
+                    print("StripeService: try reading data as string: \(String(describing: dataString))")
                     completion?(nil, error)
                 }
             }
