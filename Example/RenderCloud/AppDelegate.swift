@@ -17,22 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
-        FirebaseAPIService.baseURL = URL(string: baseUrl)
-
-        // CloudAPIService
-        let service = FirebaseAPIService()
-        service.getUniqueId { (id) in
-            guard let id = id else {
-                assertionFailure("ID generation failed!")
-                return
-            }
-            print("UniqueId generated from cloud: \(id)")
-            service.cloudFunction(functionName: "sampleCloudFunction", method: "POST", params: ["uid": id, "email": "test@gmail.com"]) { (result, error) in
-                print("Result \(String(describing: result)) error \(String(describing: error))")
-            }
-        }
 
         return true
     }
