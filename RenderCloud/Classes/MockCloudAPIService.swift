@@ -13,7 +13,11 @@ public class MockCloudAPIService: NSObject, CloudAPIService {
     }
     
     public func cloudFunction(functionName: String, method: String, params: [String : Any]?, completion: ((Any?, Error?) -> ())?) {
-        completion?(["result": "success"], nil)
+        var results: [String: Any] = ["method": method]
+        for (key, val) in params ?? [:] {
+            results[key] = val
+        }
+        completion?(results, nil)
     }
     
     public func getUniqueId(completion: @escaping ((String?) -> ())) {
@@ -23,6 +27,4 @@ public class MockCloudAPIService: NSObject, CloudAPIService {
     public func uniqueId() -> String {
         return "123"
     }
-    
-
 }
