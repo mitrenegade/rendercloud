@@ -28,7 +28,7 @@ public class FirebaseAPIService: CloudAPIService {
     }
 
     public func getUniqueId(completion: @escaping ((String?)->())) {
-        cloudFunction(functionName: "getUniqueId", params: nil) { (result, error) in
+        cloudFunction(functionName: "getUniqueId") { (result, error) in
             guard let result = result as? [String: String], let id = result["id"] else {
                 completion(nil)
                 return
@@ -37,7 +37,11 @@ public class FirebaseAPIService: CloudAPIService {
         }
     }
 
-    public func cloudFunction(functionName: String, method: String = "POST", params: [String: Any]? = nil, completion: ((_ response: Any?, _ error: Error?) -> ())?) {
+    public func cloudFunction(functionName: String, completion: ((Any?, Error?) -> ())?) {
+        cloudFunction(functionName: functionName, method: "POST", params: nil, completion: completion)
+    }
+    
+    public func cloudFunction(functionName: String, method: String, params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?) {
         guard let url = FirebaseAPIService.baseURL?.appendingPathComponent(functionName) else {
             print("FirebaseAPIService: no baseURL set, did you forget to specify it?")
             completion?(nil, nil) // todo

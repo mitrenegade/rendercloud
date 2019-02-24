@@ -20,20 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
         FirebaseAPIService.baseURL = URL(string: baseUrl)
-        
+
+        // CloudAPIService
         let service = FirebaseAPIService()
-        
         service.getUniqueId { (id) in
             guard let id = id else {
                 assertionFailure("ID generation failed!")
                 return
             }
             print("UniqueId generated from cloud: \(id)")
-            service.cloudFunction(functionName: "sampleCloudFunction", params: ["uid": id, "email": "test@gmail.com"]) { (result, error) in
+            service.cloudFunction(functionName: "sampleCloudFunction", method: "POST", params: ["uid": id, "email": "test@gmail.com"]) { (result, error) in
                 print("Result \(String(describing: result)) error \(String(describing: error))")
             }
         }
-        
+
         return true
     }
 

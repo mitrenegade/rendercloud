@@ -8,12 +8,12 @@
 import Foundation
 //import Firebase
 
-protocol DataSnapshot {
+public protocol DataSnapshot {
     func exists() -> Bool
     func value()
 }
 
-protocol DatabaseReference {
+public protocol DatabaseReference {
     func child(path: String) -> DatabaseReference
     func observeValue(completion: (DataSnapshot)->Void)
 }

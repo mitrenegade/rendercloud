@@ -12,8 +12,9 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* CloudAPIProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* CloudAPIProtocolTests.swift */; };
 		7F24F24CE37829F33662738F /* Pods_RenderCloud_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9E45440E3AB4E790238315 /* Pods_RenderCloud_Example.framework */; };
+		C64AAA84222336E50023A1F1 /* DatabaseProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */; };
 		C6E11ABC21FE40C700EE3126 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E11ABB21FE40C700EE3126 /* Constants.swift */; };
 		C6E11ABF21FE417200EE3126 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */; };
 		C6E11AC021FE417200EE3126 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */; };
@@ -43,10 +44,11 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* RenderCloud_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderCloud_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* CloudAPIProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAPIProtocolTests.swift; sourceTree = "<group>"; };
 		7351BE4B59726A811292D77F /* RenderCloud.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RenderCloud.podspec; path = ../RenderCloud.podspec; sourceTree = "<group>"; };
 		7F3493FFEC5AF7C47F766CBB /* Pods-RenderCloud_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RenderCloud_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RenderCloud_Tests/Pods-RenderCloud_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A20013A191DCA959497E40AF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocolTests.swift; sourceTree = "<group>"; };
 		C6E11ABB21FE40C700EE3126 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -141,7 +143,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* CloudAPIProtocolTests.swift */,
+				C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -329,7 +332,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				C64AAA84222336E50023A1F1 /* DatabaseProtocolTests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* CloudAPIProtocolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
