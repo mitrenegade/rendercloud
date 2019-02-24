@@ -10,23 +10,23 @@ import UIKit
 
 fileprivate let API_VERSION: String = "1.1"
 
-public protocol CloudAPIService {
-    func cloudFunction(functionName: String, method: String, params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?)
-    func getUniqueId(completion: @escaping ((String?)->()))
-    func uniqueId() -> String
-}
-
-public class FirebaseAPIService: NSObject, CloudAPIService {
+public class FirebaseAPIService: CloudAPIService {
     // variables for creating customer key
     private var urlSession: URLSession?
     private var dataTask: URLSessionDataTask?
     public static var baseURL: URL?
     
-    public override init() {
-        super.init()
+    public init() {
         urlSession = URLSession(configuration: .default)
     }
     
+    public func uniqueId() -> String {
+        // generates a unique id very similar to server's unique id, but doesn't make so many requests. matches API 1.1
+        let secondsSince1970 = Int(Date().timeIntervalSince1970)
+        let randomId = Int(arc4random_uniform(UInt32(899999))) + 100000
+        return "\(secondsSince1970)-\(randomId)"
+    }
+
     public func getUniqueId(completion: @escaping ((String?)->())) {
         cloudFunction(functionName: "getUniqueId", params: nil) { (result, error) in
             guard let result = result as? [String: String], let id = result["id"] else {
@@ -36,14 +36,7 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
             completion(id)
         }
     }
-    
-    public func uniqueId() -> String {
-        // generates a unique id very similar to server's unique id, but doesn't make so many requests. matches API 1.1
-        let secondsSince1970 = Int(Date().timeIntervalSince1970)
-        let randomId = Int(arc4random_uniform(UInt32(899999))) + 100000
-        return "\(secondsSince1970)-\(randomId)"
-    }
-    
+
     public func cloudFunction(functionName: String, method: String = "POST", params: [String: Any]? = nil, completion: ((_ response: Any?, _ error: Error?) -> ())?) {
         guard let url = FirebaseAPIService.baseURL?.appendingPathComponent(functionName) else {
             print("FirebaseAPIService: no baseURL set, did you forget to specify it?")
