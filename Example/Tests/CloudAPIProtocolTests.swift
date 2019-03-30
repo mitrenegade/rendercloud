@@ -5,14 +5,9 @@ class CloudAPIProtocolTests: XCTestCase {
     var service: CloudAPIService!
     override func setUp() {
         super.setUp()
-        service = MockCloudAPIService(mockUniqueId: "123", mockResults: ["response": "abc"])
+        service = MockCloudAPIService(uniqueId: "123", results: ["response": "abc"])
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
+
     func testUniqueId() {
         let uniqueId = service.uniqueId()
         XCTAssert(uniqueId == "123", "Unique id not returned")
@@ -21,10 +16,9 @@ class CloudAPIProtocolTests: XCTestCase {
     func testGetUniqueId() {
         let exp = expectation(description: "UniqueID generation by client")
         service.getUniqueId { (id) in
-            guard let id = id else {
-                return
+            if id != nil {
+                exp.fulfill()
             }
-            exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
     }

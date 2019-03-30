@@ -6,11 +6,10 @@
 //
 
 import Foundation
-//import Firebase
 
 public protocol DataSnapshot {
     func exists() -> Bool
-    func value()
+    var value: [String: Any]? { get } // not sure if this is correct for DataSnapshot
 }
 
 public protocol DatabaseReference {

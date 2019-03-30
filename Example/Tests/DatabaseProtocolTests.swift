@@ -7,27 +7,23 @@
 //
 
 import XCTest
+import RenderCloud
 
 class DatabaseProtocolTests: XCTestCase {
-
+    var firRef: DatabaseReference!
+    var snapshot: DataSnapshot!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
+        firRef = MockDatabaseReference(snapshot: snapshot)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testSnapshotExists() {
+        XCTAssertTrue(snapshot.exists())
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSnapshotValue() {
+        XCTAssertNotNil(snapshot.value != nil)
+        XCTAssertEqual(snapshot.value!["data"] as? String, "123")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
