@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class MockDataSnapshot: DataSnapshot {
+public class MockDataSnapshot: Snapshot {
     private var mockExists: Bool
     private var mockValue: [String: Any]?
 
@@ -25,18 +25,18 @@ public class MockDataSnapshot: DataSnapshot {
     }
 }
 
-public class MockDatabaseReference: DatabaseReference {
-    private var mockSnapshot: DataSnapshot
+public class MockDatabaseReference: Reference {
+    private var mockSnapshot: Snapshot
 
-    public init(snapshot: DataSnapshot) {
+    public init(snapshot: Snapshot) {
         mockSnapshot = snapshot
     }
 
-    public func child(path: String) -> DatabaseReference {
+    public func child(path: String) -> Reference {
         return self
     }
     
-    public func observeValue(completion: (DataSnapshot) -> Void) {
+    public func observeValue(completion: (Snapshot) -> Void) {
         completion(mockSnapshot)
     }
 }

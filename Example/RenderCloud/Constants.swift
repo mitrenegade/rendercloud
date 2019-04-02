@@ -7,7 +7,7 @@
 //
 
 let TESTING: Bool = true
-let AIRPLANE_MODE: Bool = true
+var AIRPLANE_MODE: Bool = true // this variable can be toggled by demoViewController
 
 let FIREBASE_URL_DEV = "https://us-central1-rollcall-and-random-dev.cloudfunctions.net"
 let FIREBASE_URL_PROD = "https://us-central1-rollcall-and-random-drawing.cloudfunctions.net"

@@ -7,12 +7,12 @@
 
 import Foundation
 
-public protocol DataSnapshot {
+public protocol Snapshot {
     func exists() -> Bool
     var value: [String: Any]? { get } // not sure if this is correct for DataSnapshot
 }
 
-public protocol DatabaseReference {
-    func child(path: String) -> DatabaseReference
-    func observeValue(completion: (DataSnapshot)->Void)
+public protocol Reference {
+    func child(path: String) -> Reference
+    func observeValue(completion: (Snapshot)->Void)
 }

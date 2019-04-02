@@ -10,8 +10,8 @@ import XCTest
 import RenderCloud
 
 class DatabaseProtocolTests: XCTestCase {
-    var firRef: DatabaseReference!
-    var snapshot: DataSnapshot!
+    var firRef: Reference!
+    var snapshot: Snapshot!
     
     override func setUp() {
         snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
