@@ -8,6 +8,7 @@
 
 import UIKit
 import RenderCloud
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        // Firebase
+        // Do not include infolist in project: https://firebase.google.com/docs/configure/#reliable-analytics
+        let plistFilename = "GoogleService-Info\(TESTING ? "-dev" : "")"
+        let filePath = Bundle.main.path(forResource: plistFilename, ofType: "plist")
+        assert(filePath != nil, "File doesn't exist")
+        if let path = filePath, let fileopts = FirebaseOptions.init(contentsOfFile: path) {
+            FirebaseApp.configure(options: fileopts)
+        }
+        let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
+        RenderAPIService.baseURL = URL(string: baseUrl)
         return true
     }
 

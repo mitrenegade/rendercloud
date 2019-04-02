@@ -51,7 +51,7 @@ class DemoViewController: UIViewController {
         } else {
             apiService = RenderAPIService()
             
-            ref = Database.database().reference()
+            ref = Database.database().reference().child("about")
         }
 
         // make protocol request
@@ -95,6 +95,7 @@ class DemoViewController: UIViewController {
     }
 }
 
+// conformance of Firebase classes
 extension DataSnapshot: Snapshot {
 }
 
