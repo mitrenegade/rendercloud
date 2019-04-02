@@ -38,5 +38,6 @@ This pod allows any RenderApps pod to include FirebaseAPIService and the protoco
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  #s.dependency 'Firebase'
+  #s.dependency 'Firebase/Database'
 end

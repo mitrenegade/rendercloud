@@ -1,5 +1,5 @@
 //
-//  FirebaseAPIService.swift
+//  RenderAPIService.swift
 //  Balizinha
 //
 //  Created by Ren, Bobby on 2/25/18.
@@ -10,31 +10,14 @@ import UIKit
 
 fileprivate let API_VERSION: String = "1.1"
 
-public protocol CloudAPIService {
-    func cloudFunction(functionName: String, method: String, params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?)
-    func getUniqueId(completion: @escaping ((String?)->()))
-    func uniqueId() -> String
-}
-
-public class FirebaseAPIService: NSObject, CloudAPIService {
+public class RenderAPIService: CloudAPIService {
     // variables for creating customer key
     private var urlSession: URLSession?
     private var dataTask: URLSessionDataTask?
     public static var baseURL: URL?
     
-    public override init() {
-        super.init()
+    public init() {
         urlSession = URLSession(configuration: .default)
-    }
-    
-    public func getUniqueId(completion: @escaping ((String?)->())) {
-        cloudFunction(functionName: "getUniqueId", params: nil) { (result, error) in
-            guard let result = result as? [String: String], let id = result["id"] else {
-                completion(nil)
-                return
-            }
-            completion(id)
-        }
     }
     
     public func uniqueId() -> String {
@@ -43,10 +26,24 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
         let randomId = Int(arc4random_uniform(UInt32(899999))) + 100000
         return "\(secondsSince1970)-\(randomId)"
     }
+
+    public func getUniqueId(completion: @escaping ((String?)->())) {
+        cloudFunction(functionName: "getUniqueId") { (result, error) in
+            guard let result = result as? [String: String], let id = result["id"] else {
+                completion(nil)
+                return
+            }
+            completion(id)
+        }
+    }
+
+    public func cloudFunction(functionName: String, completion: ((Any?, Error?) -> ())?) {
+        cloudFunction(functionName: functionName, method: "POST", params: nil, completion: completion)
+    }
     
-    public func cloudFunction(functionName: String, method: String = "POST", params: [String: Any]? = nil, completion: ((_ response: Any?, _ error: Error?) -> ())?) {
-        guard let url = FirebaseAPIService.baseURL?.appendingPathComponent(functionName) else {
-            print("FirebaseAPIService: no baseURL set, did you forget to specify it?")
+    public func cloudFunction(functionName: String, method: String, params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?) {
+        guard let url = RenderAPIService.baseURL?.appendingPathComponent(functionName) else {
+            print("RenderAPIService: no baseURL set, did you forget to specify it?")
             completion?(nil, nil) // todo
             return
         }
@@ -60,7 +57,7 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
         do {
             try request.httpBody = JSONSerialization.data(withJSONObject: body, options: [])
         } catch let error {
-            print("FirebaseAPIService: cloudFunction could not serialize params: \(String(describing: params)) with error \(error)")
+            print("RenderAPIService: cloudFunction could not serialize params: \(String(describing: params)) with error \(error)")
         }
         
         dataTask = urlSession?.dataTask(with: request) { data, response, error in
@@ -73,14 +70,14 @@ public class FirebaseAPIService: NSObject, CloudAPIService {
             if let usableData = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: usableData, options: .allowFragments) as? [String: Any]
-                    //print("FirebaseAPIService: urlSession completed with json \(json)")
+                    //print("RenderAPIService: urlSession completed with json \(json)")
                     if statusCode >= 300 {
                         completion?(nil, NSError(domain: "balizinha", code: statusCode, userInfo: json))
                     } else {
                         completion?(json, nil)
                     }
                 } catch let error {
-                    print("FirebaseAPIService \(url.absoluteString): JSON parsing resulted in code \(statusCode) error \(error)")
+                    print("RenderAPIService \(url.absoluteString): JSON parsing resulted in code \(statusCode) error \(error)")
                     let dataString = String.init(data: usableData, encoding: .utf8)
                     print("StripeService: try reading data as string: \(String(describing: dataString))")
                     completion?(nil, error)
