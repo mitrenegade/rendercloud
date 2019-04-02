@@ -24,6 +24,6 @@ class DatabaseProtocolTests: XCTestCase {
 
     func testSnapshotValue() {
         XCTAssertNotNil(snapshot.value != nil)
-        XCTAssertEqual(snapshot.value!["data"] as? String, "123")
+        XCTAssertEqual((snapshot.value as! [String: Any])["data"] as? String, "123")
     }
 }

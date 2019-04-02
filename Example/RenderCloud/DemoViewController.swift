@@ -96,9 +96,13 @@ class DemoViewController: UIViewController {
 }
 
 extension DataSnapshot: Snapshot {
-    
 }
 
 extension DatabaseReference: Reference {
-    
+    public func observeValue(completion: @escaping (Snapshot) -> Void) {
+        observe(.value, with: completion)
+    }    
+    public func child(path: String) -> Reference {
+        return child(path)
+    }
 }

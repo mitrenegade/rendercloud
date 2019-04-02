@@ -20,7 +20,7 @@ public class MockDataSnapshot: Snapshot {
         return mockExists
     }
     
-    public var value: [String: Any]? {
+    public var value: Any? {
         return mockValue
     }
 }

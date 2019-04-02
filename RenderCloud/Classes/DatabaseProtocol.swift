@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import FirebaseCore
 
 public protocol Snapshot {
     func exists() -> Bool
-    var value: [String: Any]? { get } // not sure if this is correct for DataSnapshot
+    var value: Any? { get }
 }
 
 public protocol Reference {
     func child(path: String) -> Reference
-    func observeValue(completion: (Snapshot)->Void)
+    func observeValue(completion: @escaping (Snapshot)->Void)
 }
