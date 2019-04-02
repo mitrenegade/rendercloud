@@ -23,7 +23,6 @@ class DemoViewController: UIViewController {
 
     var apiService: CloudAPIService?
     var ref: Reference?
-    var snapshot: Snapshot?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +45,9 @@ class DemoViewController: UIViewController {
         // setup data
         if AIRPLANE_MODE {
             apiService = MockCloudAPIService(uniqueId: "123", results: ["data": "abc"])
-            snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
-            ref = MockDatabaseReference(snapshot: snapshot!)
+
+            let snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
+            ref = MockDatabaseReference(snapshot: snapshot)
         } else {
             apiService = FirebaseAPIService()
         }
@@ -82,6 +82,13 @@ class DemoViewController: UIViewController {
     }
     
     private func doLoadRef() {
-        
+        ref?.observeValue(completion: { [weak self] (snapshot) in
+            guard snapshot.exists() else {
+                self?.labelRef.text = "snapshot doesn't exist"
+                return
+            }
+            print("Snapshot \(snapshot.value!)")
+            self?.labelRef.text = "\(snapshot.value!)"
+        })
     }
 }
