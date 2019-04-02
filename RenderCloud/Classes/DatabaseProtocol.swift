@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseCore
 
 public protocol Snapshot {
     func exists() -> Bool
