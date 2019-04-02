@@ -10,6 +10,12 @@ import UIKit
 import RenderCloud
 
 class DemoViewController: UIViewController {
+    
+    @IBOutlet weak var toggle: UISwitch!
+    @IBOutlet weak var labelToggle: UILabel!
+    
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var labelButton: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +40,11 @@ class DemoViewController: UIViewController {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func didClickButton(_ sender: Any?) {
+        
     }
-    */
-
+    
+    @IBAction func didToggle(_ sender: UISwitch?) {
+        
+    }
 }

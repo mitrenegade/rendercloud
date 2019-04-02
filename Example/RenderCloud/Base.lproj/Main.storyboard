@@ -20,8 +20,50 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-FI-hD7">
+                                <rect key="frame" x="170.5" y="131" width="34" height="30"/>
+                                <state key="normal" title="Load"/>
+                                <connections>
+                                    <action selector="didClickButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oZb-Br-mNA"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CV3-ZN-Ndy">
+                                <rect key="frame" x="163" y="60" width="51" height="31"/>
+                                <connections>
+                                    <action selector="didToggle:" destination="vXZ-lx-hvc" eventType="valueChanged" id="sXl-Yw-Cee"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbN-xr-kWa">
+                                <rect key="frame" x="220" y="65" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ks8-cK-BaL">
+                                <rect key="frame" x="166.5" y="169" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ks8-cK-BaL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="0Kd-xH-9au"/>
+                            <constraint firstItem="ks8-cK-BaL" firstAttribute="top" secondItem="onH-FI-hD7" secondAttribute="bottom" constant="8" id="7XC-zD-ZMP"/>
+                            <constraint firstItem="bbN-xr-kWa" firstAttribute="centerY" secondItem="CV3-ZN-Ndy" secondAttribute="centerY" id="AhW-Ru-eTE"/>
+                            <constraint firstItem="onH-FI-hD7" firstAttribute="top" secondItem="CV3-ZN-Ndy" secondAttribute="bottom" constant="40" id="GOw-dm-lvf"/>
+                            <constraint firstItem="CV3-ZN-Ndy" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="HpX-vQ-lYn"/>
+                            <constraint firstItem="bbN-xr-kWa" firstAttribute="leading" secondItem="CV3-ZN-Ndy" secondAttribute="trailing" constant="8" id="IGM-1e-itr"/>
+                            <constraint firstItem="CV3-ZN-Ndy" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="slb-vG-1P4"/>
+                            <constraint firstItem="onH-FI-hD7" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="yFQ-wU-BsO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="button" destination="onH-FI-hD7" id="8T0-8j-eRO"/>
+                        <outlet property="labelToggle" destination="bbN-xr-kWa" id="B4W-6C-PgW"/>
+                        <outlet property="toggle" destination="CV3-ZN-Ndy" id="aKk-M5-wRo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
