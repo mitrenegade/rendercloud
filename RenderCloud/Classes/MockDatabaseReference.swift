@@ -61,7 +61,7 @@ public class MockDatabaseReference: Reference {
     }
     
     public func queryOrdered(by child: String) -> Query {
-        return MockQuery(ref: self)
+        return MockQuery(ref: self, snapshot: mockSnapshot)
     }
     
     public func updateChildValues(_ params: [AnyHashable : Any]) {
@@ -78,12 +78,18 @@ public class MockDatabaseReference: Reference {
 }
 
 public class MockQuery: Query {
-    private var mockReference: Reference
-    public init(ref: Reference) {
-        mockReference = ref
+    public func observeSingleValue(completion: @escaping (Snapshot) -> Void) {
+        completion(mockSnapshot)
     }
     
-    public func queryEqual(to value: Any) -> Reference {
-        return mockReference
+    private var mockSnapshot: Snapshot
+    private var mockReference: Reference
+    public init(ref: Reference, snapshot: Snapshot) {
+        mockReference = ref
+        mockSnapshot = snapshot
+    }
+    
+    public func queryEqual(to value: Any) -> Query {
+        return MockQuery(ref: mockReference, snapshot: mockSnapshot)
     }
 }

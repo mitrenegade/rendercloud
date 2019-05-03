@@ -30,5 +30,6 @@ public protocol Reference {
 }
 
 public protocol Query {
-    func queryEqual(to value: Any) -> Reference
+    func queryEqual(to value: Any) -> Query
+    func observeSingleValue(completion: @escaping (Snapshot)->Void)
 }
