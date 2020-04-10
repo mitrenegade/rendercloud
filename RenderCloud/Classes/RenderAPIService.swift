@@ -16,10 +16,14 @@ public class RenderAPIService: CloudAPIService {
     private var dataTask: URLSessionDataTask?
     public var baseUrl: URL?
     
-    public init(baseUrl: String = "") {
+    // Database protocol
+    private var baseRef: Reference?
+    
+    public init(baseUrl: String = "", baseRef: Reference?) {
         urlSession = URLSession(configuration: .default)
         self.baseUrl = URL(string: baseUrl)
         assert(self.baseUrl != nil, "RenderAPIService: no baseUrl set, did you forget to specify it?")
+        self.baseRef = baseRef
     }
     
     public func uniqueId() -> String {
@@ -95,3 +99,9 @@ public class RenderAPIService: CloudAPIService {
     }
 }
 
+extension RenderAPIService: CloudDatabaseService {
+    static let connectRoot = "stripeConnectAccounts"
+    public func connectedAccount(with userId: String) -> Reference? {
+        return baseRef?.child(path: RenderAPIService.connectRoot).child(path: userId)
+    }
+}
