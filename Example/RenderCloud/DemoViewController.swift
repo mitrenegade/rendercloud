@@ -23,6 +23,8 @@ class DemoViewController: UIViewController {
 
     var apiService: CloudAPIService?
     var ref: Reference?
+    
+    private let firRef = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +50,9 @@ class DemoViewController: UIViewController {
             ref = MockDatabaseReference(snapshot: snapshot)
         } else {
             let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
-            apiService = RenderAPIService(baseUrl: baseUrl)
+            apiService = RenderAPIService(baseUrl: baseUrl, baseRef: firRef)
             
-            ref = Database.database().reference().child("about")
+            ref = firRef.child("about")
         }
 
         // make protocol request

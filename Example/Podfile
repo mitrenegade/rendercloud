@@ -2,6 +2,8 @@ use_frameworks!
 
 target 'RenderCloud_Example' do
   pod 'RenderCloud', :path => '../'
+  pod 'Firebase', '~> 6.21'
+  pod 'Firebase/Database', '~> 6.1'
 
   target 'RenderCloud_Tests' do
     inherit! :search_paths
