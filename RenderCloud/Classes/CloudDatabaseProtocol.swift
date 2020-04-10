@@ -8,5 +8,5 @@
 // interface into specific uses of the Database protocol
 public protocol CloudDatabaseService {
     func connectedAccount(with userId: String) -> Reference?
-    func reference(with child: String) -> Reference?
+    func reference(at child: String) -> Reference?
 }
