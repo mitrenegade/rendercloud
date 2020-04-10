@@ -8,12 +8,15 @@
 import UIKit
 
 public class MockCloudAPIService: NSObject, CloudAPIService {
+    public var baseUrl: URL?
+    
     private var mockUniqueId: String?
     private var mockResults: [String: Any]?
     
     public init(uniqueId: String, results: [String: Any]?) {
         mockUniqueId = uniqueId
         mockResults = results
+        baseUrl = nil
         super.init()
     }
 

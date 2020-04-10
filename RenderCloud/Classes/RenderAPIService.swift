@@ -14,15 +14,12 @@ public class RenderAPIService: CloudAPIService {
     // variables for creating customer key
     private var urlSession: URLSession?
     private var dataTask: URLSessionDataTask?
-    let baseUrl: URL
+    public var baseUrl: URL?
     
-    public init?(baseUrl: String) {
+    public init(baseUrl: String = "") {
         urlSession = URLSession(configuration: .default)
-        guard let url = URL(string: baseUrl) else {
-            assertionFailure("RenderAPIService: no baseUrl set, did you forget to specify it?")
-            return nil
-        }
-        self.baseUrl = url
+        self.baseUrl = URL(string: baseUrl)
+        assert(self.baseUrl != nil, "RenderAPIService: no baseUrl set, did you forget to specify it?")
     }
     
     public func uniqueId() -> String {
@@ -47,7 +44,10 @@ public class RenderAPIService: CloudAPIService {
     }
     
     public func cloudFunction(functionName: String, method: String, params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?) {
-        let url = baseUrl.appendingPathComponent(functionName)
+        guard let url = baseUrl?.appendingPathComponent(functionName) else {
+            completion?(nil, nil) // TODO
+            return
+        }
         var request = URLRequest(url:url)
         request.httpMethod = method
         request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
