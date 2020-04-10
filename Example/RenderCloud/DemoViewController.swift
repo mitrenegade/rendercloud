@@ -26,8 +26,6 @@ class DemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
-        RenderAPIService.baseURL = URL(string: baseUrl)
 
         toggle.isOn = AIRPLANE_MODE
         labelToggle.text = AIRPLANE_MODE ? "AIRPLANE_MODE" : "CONNECTED"
@@ -49,7 +47,8 @@ class DemoViewController: UIViewController {
             let snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
             ref = MockDatabaseReference(snapshot: snapshot)
         } else {
-            apiService = RenderAPIService()
+            let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
+            apiService = RenderAPIService(baseUrl: baseUrl)
             
             ref = Database.database().reference().child("about")
         }
