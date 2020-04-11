@@ -46,7 +46,4 @@ Pod::Spec.new do |s|
   s.dependency 'Firebase/Database'
   s.dependency 'Firebase/Storage'
   s.dependency 'Firebase/RemoteConfig'
-  s.dependency 'RxSwift'
-  s.dependency 'RxCocoa'
-  s.dependency 'RxOptional'
 end

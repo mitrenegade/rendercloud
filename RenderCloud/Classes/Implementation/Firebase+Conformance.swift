@@ -8,7 +8,6 @@
 //  Makes Firebase's DatabaseReference conform to Reference, which is a RenderCloud requirement
 
 import FirebaseDatabase
-import RenderCloud
 
 extension DataSnapshot: Snapshot {
     public var allChildren: [Snapshot]? {

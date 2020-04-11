@@ -6,8 +6,6 @@
 //  Copyright © 2018 Bobby Ren. All rights reserved.
 //
 
-import RenderCloud
-
 fileprivate let API_VERSION: String = "1.1"
 
 public class RenderAPIService: CloudAPIService {
