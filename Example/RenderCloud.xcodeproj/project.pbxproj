@@ -16,7 +16,6 @@
 		7F24F24CE37829F33662738F /* Pods_RenderCloud_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9E45440E3AB4E790238315 /* Pods_RenderCloud_Example.framework */; };
 		C64AAA84222336E50023A1F1 /* DatabaseProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */; };
 		C64AAA8F22233D410023A1F1 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64AAA8E22233D410023A1F1 /* DemoViewController.swift */; };
-		C6B70C1E2269120400AD041C /* FirebaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B70C1D2269120400AD041C /* FirebaseExtensions.swift */; };
 		C6E11ABC21FE40C700EE3126 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E11ABB21FE40C700EE3126 /* Constants.swift */; };
 		C6E11ABF21FE417200EE3126 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */; };
 		C6E11AC021FE417200EE3126 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */; };
@@ -52,7 +51,6 @@
 		A20013A191DCA959497E40AF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocolTests.swift; sourceTree = "<group>"; };
 		C64AAA8E22233D410023A1F1 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
-		C6B70C1D2269120400AD041C /* FirebaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseExtensions.swift; sourceTree = "<group>"; };
 		C6E11ABB21FE40C700EE3126 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				C6B70C1D2269120400AD041C /* FirebaseExtensions.swift */,
 			);
 			name = "Example for RenderCloud";
 			path = RenderCloud;
@@ -358,7 +355,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6B70C1E2269120400AD041C /* FirebaseExtensions.swift in Sources */,
 				C64AAA8F22233D410023A1F1 /* DemoViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				C6E11ABC21FE40C700EE3126 /* Constants.swift in Sources */,
