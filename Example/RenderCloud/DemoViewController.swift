@@ -21,10 +21,7 @@ class DemoViewController: UIViewController {
     @IBOutlet weak var buttonRef: UIButton!
     @IBOutlet weak var labelRef: UILabel!
 
-    var apiService: CloudAPIService?
-    var ref: Reference?
-    
-    private let firRef = Database.database().reference()
+    var apiService: (CloudAPIService & CloudDatabaseService)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +44,10 @@ class DemoViewController: UIViewController {
             apiService = MockCloudAPIService(uniqueId: "123", results: ["data": "abc"])
 
             let snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
-            ref = MockDatabaseReference(snapshot: snapshot)
         } else {
             let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
-            apiService = RenderAPIService(baseUrl: baseUrl, baseRef: firRef)
-            
-            ref = firRef.child("about")
+            let baseRef = Database.database().reference()
+            apiService = RenderAPIService(baseUrl: baseUrl, baseRef: baseRef)
         }
 
         // make protocol request
@@ -85,7 +80,7 @@ class DemoViewController: UIViewController {
     }
     
     private func doLoadRef() {
-        ref?.observeValue(completion: { [weak self] (snapshot) in
+        apiService?.reference(at: "about")?.observeValue(completion: { [weak self] (snapshot) in
             guard snapshot.exists() else {
                 self?.labelRef.text = "snapshot doesn't exist"
                 return

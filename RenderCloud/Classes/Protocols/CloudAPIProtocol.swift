@@ -11,5 +11,4 @@ public protocol CloudAPIService {
     func cloudFunction(functionName: String, method: String, params: [String: Any]?, completion: ((_ response: Any?, _ error: Error?) -> ())?)
     func getUniqueId(completion: @escaping ((String?)->()))
     func uniqueId() -> String
-    var baseUrl: URL? { get }
 }
