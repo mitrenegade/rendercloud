@@ -41,3 +41,13 @@ public class MockCloudAPIService: NSObject, CloudAPIService {
         return mockUniqueId ?? "123"
     }
 }
+
+extension MockCloudAPIService: CloudDatabaseService {
+    public func connectedAccount(with userId: String) -> Reference? {
+        return nil
+    }
+    
+    public func reference(at child: String) -> Reference? {
+        return nil
+    }
+}
