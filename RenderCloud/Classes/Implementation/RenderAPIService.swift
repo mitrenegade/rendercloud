@@ -1,12 +1,12 @@
 //
-//  APIService.swift
-//  RenderCloud_Example
+//  RenderAPIService.swift
+//  Balizinha
 //
-//  Created by Bobby Ren on 4/10/20.
-//  Copyright © 2020 CocoaPods. All rights reserved.
+//  Created by Ren, Bobby on 2/25/18.
+//  Copyright © 2018 Bobby Ren. All rights reserved.
 //
 
-import RenderCloud
+fileprivate let API_VERSION: String = "1.1"
 
 public class RenderAPIService: CloudAPIService {
     // variables for creating customer key
@@ -15,11 +15,13 @@ public class RenderAPIService: CloudAPIService {
     public var baseUrl: URL?
     
     // Database protocol
-    private var baseRef: Reference?
+    var baseRef: Reference?
     
-    public init(baseUrl: String = "", baseRef: Reference?) {
+    public init(baseUrl: String?, baseRef: Reference?) {
         urlSession = URLSession(configuration: .default)
-        self.baseUrl = URL(string: baseUrl)
+        if let url = baseUrl {
+            self.baseUrl = URL(string: url)
+        }
         assert(self.baseUrl != nil, "RenderAPIService: no baseUrl set, did you forget to specify it?")
         self.baseRef = baseRef
     }
@@ -55,7 +57,7 @@ public class RenderAPIService: CloudAPIService {
         request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
         
         var body: [String: Any] = params ?? [:]
-        body["apiVersion"] = 1.4
+        body["apiVersion"] = API_VERSION
         
         do {
             try request.httpBody = JSONSerialization.data(withJSONObject: body, options: [])
@@ -97,9 +99,13 @@ public class RenderAPIService: CloudAPIService {
     }
 }
 
+// MARK: Cloud Database Service
 extension RenderAPIService: CloudDatabaseService {
-    static let connectRoot = "stripeConnectAccounts"
     public func connectedAccount(with userId: String) -> Reference? {
-        return baseRef?.child(path: RenderAPIService.connectRoot).child(path: userId)
+        return reference(at: "stripeConnectedAccount")
+    }
+    
+    public func reference(at child: String) -> Reference? {
+        return baseRef?.child(path: child)
     }
 }

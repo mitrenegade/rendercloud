@@ -14,10 +14,8 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* CloudAPIProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* CloudAPIProtocolTests.swift */; };
 		7F24F24CE37829F33662738F /* Pods_RenderCloud_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9E45440E3AB4E790238315 /* Pods_RenderCloud_Example.framework */; };
-		8ED2D02D2440D269001FB9E2 /* RenderAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2D02C2440D269001FB9E2 /* RenderAPIService.swift */; };
 		C64AAA84222336E50023A1F1 /* DatabaseProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */; };
 		C64AAA8F22233D410023A1F1 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64AAA8E22233D410023A1F1 /* DemoViewController.swift */; };
-		C6B70C1E2269120400AD041C /* FirebaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B70C1D2269120400AD041C /* FirebaseExtensions.swift */; };
 		C6E11ABC21FE40C700EE3126 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E11ABB21FE40C700EE3126 /* Constants.swift */; };
 		C6E11ABF21FE417200EE3126 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */; };
 		C6E11AC021FE417200EE3126 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */; };
@@ -50,11 +48,9 @@
 		607FACEB1AFB9204008FA782 /* CloudAPIProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAPIProtocolTests.swift; sourceTree = "<group>"; };
 		7351BE4B59726A811292D77F /* RenderCloud.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RenderCloud.podspec; path = ../RenderCloud.podspec; sourceTree = "<group>"; };
 		7F3493FFEC5AF7C47F766CBB /* Pods-RenderCloud_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RenderCloud_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RenderCloud_Tests/Pods-RenderCloud_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8ED2D02C2440D269001FB9E2 /* RenderAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderAPIService.swift; sourceTree = "<group>"; };
 		A20013A191DCA959497E40AF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocolTests.swift; sourceTree = "<group>"; };
 		C64AAA8E22233D410023A1F1 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
-		C6B70C1D2269120400AD041C /* FirebaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseExtensions.swift; sourceTree = "<group>"; };
 		C6E11ABB21FE40C700EE3126 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -129,11 +125,9 @@
 				C6E11ABB21FE40C700EE3126 /* Constants.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				C64AAA8E22233D410023A1F1 /* DemoViewController.swift */,
-				8ED2D02C2440D269001FB9E2 /* RenderAPIService.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				C6B70C1D2269120400AD041C /* FirebaseExtensions.swift */,
 			);
 			name = "Example for RenderCloud";
 			path = RenderCloud;
@@ -289,15 +283,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RenderCloud_Example/Pods-RenderCloud_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -357,8 +355,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6B70C1E2269120400AD041C /* FirebaseExtensions.swift in Sources */,
-				8ED2D02D2440D269001FB9E2 /* RenderAPIService.swift in Sources */,
 				C64AAA8F22233D410023A1F1 /* DemoViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				C6E11ABC21FE40C700EE3126 /* Constants.swift in Sources */,

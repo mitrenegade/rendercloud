@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'RenderCloud'
   s.version          = '2.0.1'
-  s.summary          = 'A pod solely to abstract FirebaseAPIServices'
+  s.summary          = 'Abstractions for cloud API calls and a direct Database interface, with Firebase implementation'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,10 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-This pod allows any RenderApps pod to include FirebaseAPIService and the protocol CloudService
+  This pod provides an interface for:
+       Cloud API calls
+       Database and queries
+  This pod also includes a vanilla Firebase implementation
                        DESC
 
   s.homepage         = 'https://bitbucket.org/renderapps/rendercloud'
@@ -37,5 +40,10 @@ This pod allows any RenderApps pod to include FirebaseAPIService and the protoco
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.dependency 'Firebase'
+  s.dependency 'Firebase/Core'
+  s.dependency 'Firebase/Auth'
+  s.dependency 'Firebase/Database'
+  s.dependency 'Firebase/Storage'
+  s.dependency 'Firebase/RemoteConfig'
 end
