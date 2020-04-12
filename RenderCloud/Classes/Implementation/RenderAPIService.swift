@@ -17,9 +17,11 @@ public class RenderAPIService: CloudAPIService {
     // Database protocol
     var baseRef: Reference?
     
-    public init(baseUrl: String = "", baseRef: Reference?) {
+    public init(baseUrl: String?, baseRef: Reference?) {
         urlSession = URLSession(configuration: .default)
-        self.baseUrl = URL(string: baseUrl)
+        if let url = baseUrl {
+            self.baseUrl = URL(string: url)
+        }
         assert(self.baseUrl != nil, "RenderAPIService: no baseUrl set, did you forget to specify it?")
         self.baseRef = baseRef
     }
