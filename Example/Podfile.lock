@@ -113,7 +113,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
-  - RenderCloud (2.0.1):
+  - RenderCloud (2.0.0):
     - Firebase
     - Firebase/Auth
     - Firebase/Core
@@ -180,7 +180,7 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  RenderCloud: 6994a8f41fcacfcd758d294316003403294c93f4
+  RenderCloud: 0afb06feb5a67ca8f4a229a9a8417400e6e0bab7
 
 PODFILE CHECKSUM: 05028c07036433fb655553f4f78b497c17d1e8ef
 
