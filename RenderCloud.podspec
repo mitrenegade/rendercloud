@@ -24,11 +24,11 @@ Pod::Spec.new do |s|
   This pod also includes a vanilla Firebase implementation
                        DESC
 
-  s.homepage         = 'https://bitbucket.org/renderapps/rendercloud'
+  s.homepage         = 'https://github.com/mitrenegade/rendercloud'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Bobby Ren' => 'bobby@renderapps.io' }
-  s.source           = { :git => 'git@bitbucket.org:renderapps/rendercloud.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@github.com:mitrenegade/rendercloud.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
@@ -42,8 +42,8 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.dependency 'Firebase'
   s.dependency 'Firebase/Core'
-  s.dependency 'Firebase/Auth'
-  s.dependency 'Firebase/Database'
-  s.dependency 'Firebase/Storage'
-  s.dependency 'Firebase/RemoteConfig'
+  s.dependency 'FirebaseAuth'
+  s.dependency 'FirebaseDatabase'
+#  s.dependency 'Firebase/Storage'
+#  s.dependency 'Firebase/RemoteConfig'
 end

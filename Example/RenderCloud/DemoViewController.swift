@@ -8,7 +8,8 @@
 
 import UIKit
 import RenderCloud
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class DemoViewController: UIViewController {
     
