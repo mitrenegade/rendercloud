@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RenderCloud'
-  s.version          = '2.0.0'
+  s.version          = '2.1.0'
   s.summary          = 'Abstractions for cloud API calls and a direct Database interface, with Firebase implementation'
 
 # This description is used to generate tags and improve search results.
@@ -27,10 +27,10 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/mitrenegade/rendercloud'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Bobby Ren' => 'bobby@renderapps.io' }
-  s.source           = { :git => 'git@github.com:mitrenegade/rendercloud.git', :tag => s.version.to_s }
+  s.author           = { 'Bobby Ren' => 'bobbyren@gmail.com' }
+  s.source           = { :git => 'https://github.com/mitrenegade/rendercloud.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  s.swift_version = '5.1'
   s.ios.deployment_target = '10.0'
   s.static_framework = true
   s.source_files = 'RenderCloud/Classes/**/*'
@@ -44,6 +44,4 @@ Pod::Spec.new do |s|
   s.dependency 'Firebase/Core'
   s.dependency 'FirebaseAuth'
   s.dependency 'FirebaseDatabase'
-#  s.dependency 'Firebase/Storage'
-#  s.dependency 'Firebase/RemoteConfig'
 end
