@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Firebase
         // Do not include infolist in project: https://firebase.google.com/docs/configure/#reliable-analytics
-        let plistFilename = "GoogleService-Info\(TESTING ? "-dev" : "")"
+        let plistFilename = "GoogleService-Info"
         let filePath = Bundle.main.path(forResource: plistFilename, ofType: "plist")
         assert(filePath != nil, "File doesn't exist")
         if let path = filePath, let fileopts = FirebaseOptions.init(contentsOfFile: path) {

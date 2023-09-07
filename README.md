@@ -1,10 +1,5 @@
 # RenderCloud
 
-[![CI Status](https://img.shields.io/travis/Bobby Ren/RenderCloud.svg?style=flat)](https://travis-ci.org/Bobby Ren/RenderCloud)
-[![Version](https://img.shields.io/cocoapods/v/RenderCloud.svg?style=flat)](https://cocoapods.org/pods/RenderCloud)
-[![License](https://img.shields.io/cocoapods/l/RenderCloud.svg?style=flat)](https://cocoapods.org/pods/RenderCloud)
-[![Platform](https://img.shields.io/cocoapods/p/RenderCloud.svg?style=flat)](https://cocoapods.org/pods/RenderCloud)
-
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -13,17 +8,24 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-RenderCloud is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+RenderCloud is currently a private pod. To add it, first add the following line to your Podfile:
 
 ```ruby
 pod 'RenderCloud'
 ```
 
+In [https://https://console.firebase.google.com/]Firebase, create a new project, and generate a plist file by going to:
+
+`Project Overview` -> `Project Settings` -> `General` 
+
+and adding an iOS app. Store the file `GoogleService-Info.plist` in the project folder.
+
 ## Author
 
-Bobby Ren, bobby_ren@comcast.com
+Bobby Ren, bobbyren@gmail.com
 
 ## License
 
 RenderCloud is available under the MIT license. See the LICENSE file for more info.
+
+

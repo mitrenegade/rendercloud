@@ -17,7 +17,6 @@
 		C64AAA84222336E50023A1F1 /* DatabaseProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */; };
 		C64AAA8F22233D410023A1F1 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64AAA8E22233D410023A1F1 /* DemoViewController.swift */; };
 		C6E11ABC21FE40C700EE3126 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E11ABB21FE40C700EE3126 /* Constants.swift */; };
-		C6E11ABF21FE417200EE3126 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */; };
 		C6E11AC021FE417200EE3126 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 		C64AAA83222336E50023A1F1 /* DatabaseProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocolTests.swift; sourceTree = "<group>"; };
 		C64AAA8E22233D410023A1F1 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		C6E11ABB21FE40C700EE3126 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC8FE287DD5FB5D07D9DC7BF /* Pods_RenderCloud_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RenderCloud_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -136,7 +134,6 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C6E11ABD21FE417100EE3126 /* GoogleService-Info-dev.plist */,
 				C6E11ABE21FE417200EE3126 /* GoogleService-Info.plist */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
@@ -224,7 +221,6 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = H799H8B8DD;
 						LastSwiftMigration = 1030;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -259,7 +255,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				C6E11ABF21FE417200EE3126 /* GoogleService-Info-dev.plist in Resources */,
 				C6E11AC021FE417200EE3126 /* GoogleService-Info.plist in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -524,12 +519,12 @@
 			baseConfigurationReference = 33DB8729E66394F16EEF2784 /* Pods-RenderCloud_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H799H8B8DD;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = RenderCloud/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = net.BobbyRen.cwsfroster;
+				PRODUCT_BUNDLE_IDENTIFIER = io.renderapps.cloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -540,12 +535,12 @@
 			baseConfigurationReference = 039DA9836D0397250D150AAC /* Pods-RenderCloud_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H799H8B8DD;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = RenderCloud/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = net.BobbyRen.cwsfroster;
+				PRODUCT_BUNDLE_IDENTIFIER = io.renderapps.cloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

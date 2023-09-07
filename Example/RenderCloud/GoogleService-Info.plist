@@ -2,39 +2,33 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
-	<string>ca-app-pub-3940256099942544/2934735716</string>
-	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
-	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>808251410613-vbpitvq5b1e864feqnis4n94r4pjs6hb.apps.googleusercontent.com</string>
+	<string>1073251914181-i5lkmtbcb40lqv700lgng6oi147c4u5s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.808251410613-vbpitvq5b1e864feqnis4n94r4pjs6hb</string>
+	<string>com.googleusercontent.apps.1073251914181-i5lkmtbcb40lqv700lgng6oi147c4u5s</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD9hjdkiKiNFm93J-aSgOW6qTBy3lKyZO4</string>
+	<string>AIzaSyBHB_hzZPkKo4y4IL0T_LjTYTeKejGrXgQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>808251410613</string>
+	<string>1073251914181</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>io.renderapps.rendercloud</string>
+	<string>io.renderapps.cloud</string>
 	<key>PROJECT_ID</key>
-	<string>rollcall-and-random-drawing</string>
+	<string>renderclouddemo</string>
 	<key>STORAGE_BUCKET</key>
-	<string>rollcall-and-random-drawing.appspot.com</string>
+	<string>renderclouddemo.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:808251410613:ios:7062fdf3ac26d58b</string>
-	<key>DATABASE_URL</key>
-	<string>https://rollcall-and-random-drawing.firebaseio.com</string>
+	<string>1:1073251914181:ios:def9afd40987e66b9a3bac</string>
 </dict>
 </plist>
