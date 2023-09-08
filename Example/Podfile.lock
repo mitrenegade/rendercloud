@@ -94,7 +94,7 @@ PODS:
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.3.1)
   - RecaptchaInterop (100.0.0)
-  - RenderCloud (2.0.0):
+  - RenderCloud (2.1.0):
     - Firebase
     - Firebase/Core
     - FirebaseAuth
@@ -143,7 +143,7 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  RenderCloud: 8dd01203d636bed3f679bce803c1acaaf8fa2747
+  RenderCloud: b17f4551dc4758cf02fb5e23d4fa3e10a56d9b8f
 
 PODFILE CHECKSUM: 70a6d1f177c4c3a78b36f16037c5db59212427c4
 
