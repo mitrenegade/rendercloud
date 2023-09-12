@@ -14,6 +14,11 @@ RenderCloud is currently a private pod. To add it, first add the following line 
 pod 'RenderCloud'
 ```
 
+Set a base URL in the Info.plist file
+```
+
+```
+
 In [https://https://console.firebase.google.com/]Firebase, create a new project, and generate a plist file by going to:
 
 `Project Overview` -> `Project Settings` -> `General` 

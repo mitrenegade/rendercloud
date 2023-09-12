@@ -25,23 +25,6 @@ public class RenderAPIService: CloudAPIService {
         assert(self.baseUrl != nil, "RenderAPIService: no baseUrl set, did you forget to specify it?")
         self.baseRef = baseRef
     }
-    
-    public func uniqueId() -> String {
-        // generates a unique id very similar to server's unique id, but doesn't make so many requests. matches API 1.1
-        let secondsSince1970 = Int(Date().timeIntervalSince1970)
-        let randomId = Int(arc4random_uniform(UInt32(899999))) + 100000
-        return "\(secondsSince1970)-\(randomId)"
-    }
-
-    public func getUniqueId(completion: @escaping ((String?)->())) {
-        cloudFunction(functionName: "getUniqueId") { (result, error) in
-            guard let result = result as? [String: String], let id = result["id"] else {
-                completion(nil)
-                return
-            }
-            completion(id)
-        }
-    }
 
     public func cloudFunction(functionName: String, completion: ((Any?, Error?) -> ())?) {
         cloudFunction(functionName: functionName, method: "POST", params: nil, completion: completion)
