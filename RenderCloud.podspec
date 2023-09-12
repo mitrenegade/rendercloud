@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/mitrenegade/rendercloud.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.swift_version = '5.1'
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '16.0'
   s.static_framework = true
   s.source_files = 'RenderCloud/Classes/**/*'
   
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.dependency 'Firebase'
-  s.dependency 'Firebase/Core'
   s.dependency 'FirebaseAuth'
   s.dependency 'FirebaseDatabase'
+  s.dependency 'FirebaseFunctions'
 end

@@ -46,9 +46,7 @@ class DemoViewController: UIViewController {
 
             let snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
         } else {
-            let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
-            let baseRef = Database.database().reference()
-            apiService = RenderAPIService(baseUrl: baseUrl, baseRef: baseRef)
+            apiService = RenderAPIService()
         }
 
         // make protocol request

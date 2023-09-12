@@ -8,35 +8,34 @@
  */
 
 // HTTP functions
-const {onRequest} = require("firebase-functions/v2/https");
+const {onCall, HttpsError} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 
 // import all other function files
 const auth = require("./auth.js");
 
 // Sample HTTP function that returns a message
-exports.helloWorld = onRequest((request, response) => {
+exports.helloWorld = onCall((request, response) => {
   logger.info("Hello logs!", {structuredData: true});
-
-  response.send("Hello from RenderCloud's Firebase functions!");
+  return {response: "Hello from RenderCloud's Firebase functions!"};
 });
 
 // -- Auth module --
 
 // HTTP request for sign up
 // Parameters: email, password
-exports.signUp = onRequest((req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+exports.signUp = onCall((req, res) => {
+  const email = req.data.email;
+  const password = req.data.password;
 
   return auth.createUser(email, password)
       .then((userRecord) => {
         // See the UserRecord reference doc for the contents of userRecord.
         logger.info("Successfully created new user:", userRecord.uid);
-        res.status(200).json({"userId": userRecord.uid});
+        return {"userId": userRecord.uid};
       })
       .catch((error) => {
         logger.info("Error creating new user:", error);
-        res.status(500).json({"error": error});
+        throw new HttpsError(error);
       });
 });
