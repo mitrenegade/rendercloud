@@ -59,7 +59,7 @@ class DemoViewController: UIViewController {
     
     private func doCloudFunction() {
         // CloudAPIService
-        apiService?.cloudFunction(functionName: "helloWorld", method: "POST", params: nil) { [weak self] (result, error) in
+        apiService?.cloudFunction(functionName: "helloWorld") { [weak self] (result, error) in
             print("Result \(String(describing: result)) error \(String(describing: error))")
             DispatchQueue.main.async { [weak self] in
                 if let result = result {
