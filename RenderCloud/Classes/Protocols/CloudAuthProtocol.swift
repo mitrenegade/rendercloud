@@ -15,17 +15,17 @@ public enum RenderAuthError: Error {
 }
 
 public protocol CloudAuthServiceDelegate: AnyObject {
-    func userDidChange(user: User?)
+    func userDidChange(user: RenderCloud.User?)
 }
 
 public protocol CloudAuthService {
     /// Awaits completion of signup and returns a User
     /// Throws an NSError on failure
-    func signup(username: String, password: String) async throws -> User
+    func signup(username: String, password: String) async throws -> RenderCloud.User
 
     /// Awaits completion of login and returns a User
     /// Throws an NSError on failure
-    func login(username: String, password: String) async throws -> User
+    func login(username: String, password: String) async throws -> RenderCloud.User
 
     /// Awaits completion of logout
     /// Throws an NSError on failure
