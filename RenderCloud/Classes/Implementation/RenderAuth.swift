@@ -8,18 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-protocol CloudAuthServiceDelegate: AnyObject {
-    func userDidChange(user: User?)
-}
-
-protocol CloudAuthService {
-    func signUp(username: String, password: String)
-    func logIn(username: String, password: String)
-
-    var delegate: CloudAuthServiceDelegate? { get }
-}
-
-final class RenderAuthService: CloudAuthService {
+public final class RenderAuthService: CloudAuthService {
 
     private let apiService: CloudAPIService
 
@@ -27,7 +16,7 @@ final class RenderAuthService: CloudAuthService {
 
     private var user: User?
 
-    weak var delegate: CloudAuthServiceDelegate?
+    public weak var delegate: CloudAuthServiceDelegate?
 
     private let auth = Auth.auth()
 
@@ -39,7 +28,11 @@ final class RenderAuthService: CloudAuthService {
         }
     }
 
-    init(apiService: CloudAPIService = RenderAPIService(),
+    public convenience init(delegate: CloudAuthServiceDelegate?) {
+        self.init(apiService: RenderAPIService(), delegate: delegate)
+    }
+
+    internal init(apiService: CloudAPIService = RenderAPIService(),
          delegate: CloudAuthServiceDelegate? = nil) {
         self.apiService = apiService
         self.delegate = delegate
@@ -73,13 +66,13 @@ final class RenderAuthService: CloudAuthService {
 
     // Closure
 
-    func signUp(username: String, password: String) {
+    public func signUp(username: String, password: String) {
         auth.createUser(withEmail: username, password: password) { result, error in
             print("result \(result) error \(error)")
         }
     }
 
-    func logIn(username: String, password: String) {
+    public func logIn(username: String, password: String) {
         auth.signIn(withEmail: username, password: password) { result, error in
             print("result \(result) error \(error)")
         }

@@ -22,7 +22,15 @@ class DemoViewController: UIViewController {
     @IBOutlet weak var buttonRef: UIButton!
     @IBOutlet weak var labelRef: UILabel!
 
+    // Login view
+    @IBOutlet weak var labelLoginInfo: UILabel!
+    @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var inputUsername: UITextField!
+    @IBOutlet weak var inputPassword: UITextField!
+
     var apiService: (CloudAPIService & CloudDatabaseService)?
+
+    lazy var authService: CloudAuthService = RenderAuthService(delegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +42,8 @@ class DemoViewController: UIViewController {
         labelCloud.text = "Click to load from database"
     }
     
+    // MARK: - IBActions
+
     @IBAction func didToggle(_ sender: UISwitch) {
         AIRPLANE_MODE = sender.isOn
         labelToggle.text = AIRPLANE_MODE ? "AIRPLANE_MODE" : "CONNECTED"
@@ -56,7 +66,13 @@ class DemoViewController: UIViewController {
             doLoadRef()
         }
     }
-    
+
+    @IBAction func didClickLogin(_ sender: UIButton) {
+        // login/logout
+    }
+
+    // MARK: - Private Functions
+
     private func doCloudFunction() {
         // CloudAPIService
         apiService?.cloudFunction(functionName: "helloWorld") { [weak self] (result, error) in
@@ -80,5 +96,11 @@ class DemoViewController: UIViewController {
             print("Snapshot \(snapshot.value!)")
             self?.labelRef.text = "\(snapshot.value!)"
         })
+    }
+}
+
+extension DemoViewController: CloudAuthServiceDelegate {
+    func userDidChange(user: RenderCloud.User?) {
+        print("User changed \(user)")
     }
 }

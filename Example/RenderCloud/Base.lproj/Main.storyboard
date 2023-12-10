@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-FI-hD7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-FI-hD7">
                                 <rect key="frame" x="130.5" y="131" width="114" height="30"/>
                                 <state key="normal" title="Load from Cloud"/>
                                 <connections>
@@ -41,12 +39,12 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbN-xr-kWa">
-                                <rect key="frame" x="220" y="65" width="42" height="21"/>
+                                <rect key="frame" x="220" y="65.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJg-E3-jvp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJg-E3-jvp">
                                 <rect key="frame" x="118" y="197.5" width="139" height="30"/>
                                 <state key="normal" title="Load from Database"/>
                                 <connections>
@@ -59,6 +57,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V7W-dD-0fs">
+                                <rect key="frame" x="24" y="276" width="327" height="102.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWc-IO-aif">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="34.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4B9-vz-YUs">
+                                                <rect key="frame" x="0.0" y="0.0" width="247" height="34.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9Y-iw-Mgz">
+                                                <rect key="frame" x="247" y="0.0" width="80" height="34.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="4oa-H7-RBm"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="didClickLogin:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qEm-dP-2HZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LUi-Jt-Bf2">
+                                        <rect key="frame" x="0.0" y="34.5" width="327" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JMu-v0-dIl">
+                                        <rect key="frame" x="0.0" y="68.5" width="327" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -72,7 +107,10 @@
                             <constraint firstItem="CV3-ZN-Ndy" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="HpX-vQ-lYn"/>
                             <constraint firstItem="bbN-xr-kWa" firstAttribute="leading" secondItem="CV3-ZN-Ndy" secondAttribute="trailing" constant="8" id="IGM-1e-itr"/>
                             <constraint firstItem="dN9-TF-BQo" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="LZZ-8K-2wW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V7W-dD-0fs" secondAttribute="trailing" constant="8" id="OC3-Fr-yoB"/>
                             <constraint firstItem="ks8-cK-BaL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="SfS-Iz-tqv"/>
+                            <constraint firstItem="V7W-dD-0fs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="glc-4Q-79K"/>
+                            <constraint firstItem="V7W-dD-0fs" firstAttribute="top" secondItem="dN9-TF-BQo" secondAttribute="bottom" constant="20" id="jTX-TC-mFp"/>
                             <constraint firstItem="CV3-ZN-Ndy" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="slb-vG-1P4"/>
                             <constraint firstItem="dN9-TF-BQo" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="y7I-gh-WTD"/>
                             <constraint firstItem="onH-FI-hD7" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="yFQ-wU-BsO"/>
@@ -82,8 +120,12 @@
                     </view>
                     <connections>
                         <outlet property="buttonCloud" destination="onH-FI-hD7" id="ar2-ta-wEC"/>
+                        <outlet property="buttonLogin" destination="F9Y-iw-Mgz" id="NQB-1c-3mQ"/>
                         <outlet property="buttonRef" destination="oJg-E3-jvp" id="3SR-j8-btj"/>
+                        <outlet property="inputPassword" destination="JMu-v0-dIl" id="j6L-om-lxL"/>
+                        <outlet property="inputUsername" destination="LUi-Jt-Bf2" id="hE5-Tt-0cL"/>
                         <outlet property="labelCloud" destination="ks8-cK-BaL" id="SQV-dB-Qpc"/>
+                        <outlet property="labelLoginInfo" destination="4B9-vz-YUs" id="MbE-fp-ub7"/>
                         <outlet property="labelRef" destination="dN9-TF-BQo" id="CXH-SK-ofw"/>
                         <outlet property="labelToggle" destination="bbN-xr-kWa" id="B4W-6C-PgW"/>
                         <outlet property="toggle" destination="CV3-ZN-Ndy" id="aKk-M5-wRo"/>
@@ -91,6 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-127.2" y="-62.518740629685162"/>
         </scene>
     </scenes>
 </document>

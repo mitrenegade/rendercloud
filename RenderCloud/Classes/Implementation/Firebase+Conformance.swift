@@ -8,6 +8,7 @@
 //  Makes Firebase's DatabaseReference conform to Reference, which is a RenderCloud requirement
 
 import FirebaseDatabase
+import FirebaseAuth
 
 extension DataSnapshot: Snapshot {
     public var allChildren: [Snapshot]? {
@@ -45,6 +46,15 @@ extension DatabaseQuery: Query {
             completion(snapshot)
         }
     }
+}
+
+/// Maps from FIRUser to generic User
+extension FirebaseAuth.User: User {
+    public var id: String {
+        uid
+    }
     
-    
+    public var username: String {
+        email ?? uid
+    }
 }
