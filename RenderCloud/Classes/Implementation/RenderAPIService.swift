@@ -6,7 +6,7 @@
 //  Copyright © 2018 Bobby Ren. All rights reserved.
 //
 import FirebaseCore
-import FirebaseCoreInternal
+//import FirebaseCoreInternal
 import FirebaseAuth
 import FirebaseInstallations
 import FirebaseFunctions
