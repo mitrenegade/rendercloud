@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RenderCloud'
-  s.version          = '2.2.1'
+  s.version          = '2.2.2'
   s.summary          = 'Abstractions for cloud API calls and a direct Database interface, with Firebase implementation'
 
 # This description is used to generate tags and improve search results.

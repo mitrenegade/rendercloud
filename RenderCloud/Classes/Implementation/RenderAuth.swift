@@ -23,8 +23,13 @@ public final class RenderAuthService: CloudAuthService {
     // listener
     func listenToUserUpdates() {
         handler = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
-            self?.user = user
-            self?.delegate?.userDidChange(user: user)
+            if let user {
+                self?.user = User(user: user)
+            } else {
+                self?.user = nil
+            }
+
+            self?.delegate?.userDidChange(user: self?.user)
         }
     }
 
@@ -49,7 +54,7 @@ public final class RenderAuthService: CloudAuthService {
     public func signup(username: String, password: String) async throws -> User {
         do {
             let result = try await auth.createUser(withEmail: username, password: password)
-            return result.user
+            return User(user: result.user)
         } catch {
             throw handleAuthError(error)
         }
@@ -60,7 +65,7 @@ public final class RenderAuthService: CloudAuthService {
     public func login(username: String, password: String) async throws -> User {
         do {
             let result = try await auth.signIn(withEmail: username, password: password)
-            return result.user
+            return User(user: result.user)
         } catch {
             throw handleAuthError(error)
         }
@@ -90,17 +95,13 @@ public final class RenderAuthService: CloudAuthService {
     public func logout() throws {
         try auth.signOut()
     }
+}
 
-    // Closure
-//    public func signup(username: String, password: String) {
-//        auth.createUser(withEmail: username, password: password) { result, error in
-//            print("result \(result) error \(error)")
-//        }
-//    }
-//
-//    public func login(username: String, password: String) {
-//        auth.signIn(withEmail: username, password: password) { result, error in
-//            print("result \(result) error \(error)")
-//        }
-//    }
+extension User {
+
+    /// Converts a FirebaseAuth.User to a RenderCloud.User
+    init(user: FirebaseAuth.User) {
+        id = user.uid
+        username = user.email ?? user.uid
+    }
 }

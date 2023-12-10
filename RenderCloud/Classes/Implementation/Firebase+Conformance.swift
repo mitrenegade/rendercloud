@@ -47,14 +47,3 @@ extension DatabaseQuery: Query {
         }
     }
 }
-
-/// Maps from FIRUser to generic User
-extension FirebaseAuth.User: RenderCloud.User {
-    public var id: String {
-        uid
-    }
-    
-    public var username: String {
-        email ?? uid
-    }
-}
