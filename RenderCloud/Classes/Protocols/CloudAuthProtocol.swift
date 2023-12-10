@@ -7,6 +7,11 @@
 
 import Foundation
 
+public enum RenderAuthError: Error {
+    case invalidCredentials
+    case invalidEmailFormat
+}
+
 public protocol CloudAuthServiceDelegate: AnyObject {
     func userDidChange(user: User?)
 }

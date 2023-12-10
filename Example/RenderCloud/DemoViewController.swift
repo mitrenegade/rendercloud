@@ -134,6 +134,8 @@ class DemoViewController: UIViewController {
         Task {
             do {
                 let user = try await authService?.login(username: username, password: password)
+            } catch let error as RenderAuthError {
+                authMessage("Auth error: \(error)")
             } catch {
                 authMessage("Login error: \(error.localizedDescription)")
             }

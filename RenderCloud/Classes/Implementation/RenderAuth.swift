@@ -62,9 +62,16 @@ public final class RenderAuthService: CloudAuthService {
         do {
             let result = try await auth.signIn(withEmail: username, password: password)
             return result.user
-        } catch {
+        } catch let error as NSError {
             print("error \(error)")
-            throw error
+            switch error.code {
+            case 17004:
+                throw RenderAuthError.invalidCredentials
+            case 17008:
+                throw RenderAuthError.invalidEmailFormat
+            default:
+                throw error
+            }
         }
     }
 
