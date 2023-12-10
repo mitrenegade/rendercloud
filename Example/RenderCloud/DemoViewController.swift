@@ -30,7 +30,7 @@ class DemoViewController: UIViewController {
         toggle.isOn = AIRPLANE_MODE
         labelToggle.text = AIRPLANE_MODE ? "AIRPLANE_MODE" : "CONNECTED"
         
-        labelCloud.text = "Click to load from cloud"
+        labelCloud.text = "Click to call a cloud function"
         labelCloud.text = "Click to load from database"
     }
     
@@ -46,35 +46,26 @@ class DemoViewController: UIViewController {
 
             let snapshot = MockDataSnapshot(exists: true, value: ["data": "123"])
         } else {
-            let baseUrl = TESTING ? FIREBASE_URL_DEV : FIREBASE_URL_PROD
-            let baseRef = Database.database().reference()
-            apiService = RenderAPIService(baseUrl: baseUrl, baseRef: baseRef)
+            apiService = RenderAPIService()
         }
 
         // make protocol request
         if sender == buttonCloud {
-            doLoadCloud()
+            doCloudFunction()
         } else {
             doLoadRef()
         }
     }
     
-    private func doLoadCloud() {
+    private func doCloudFunction() {
         // CloudAPIService
-        apiService?.getUniqueId { [weak self] (id) in
-            guard let id = id else {
-                assertionFailure("ID generation failed!")
-                return
-            }
-            print("UniqueId generated from cloud: \(id)")
-            self?.apiService?.cloudFunction(functionName: "sampleCloudFunction", method: "POST", params: ["uid": id, "email": "test@gmail.com"]) { [weak self] (result, error) in
-                print("Result \(String(describing: result)) error \(String(describing: error))")
-                DispatchQueue.main.async { [weak self] in
-                    if let result = result {
-                        self?.labelCloud.text = "\(result)"
-                    } else if let error = error as NSError? {
-                        self?.labelCloud.text = error.debugDescription
-                    }
+        apiService?.cloudFunction(functionName: "helloWorld") { [weak self] (result, error) in
+            print("Result \(String(describing: result)) error \(String(describing: error))")
+            DispatchQueue.main.async { [weak self] in
+                if let result = result {
+                    self?.labelCloud.text = "\(result)"
+                } else if let error = error as NSError? {
+                    self?.labelCloud.text = error.debugDescription
                 }
             }
         }

@@ -8,24 +8,9 @@ class CloudAPIProtocolTests: XCTestCase {
         service = MockCloudAPIService(uniqueId: "123", results: ["response": "abc"])
     }
 
-    func testUniqueId() {
-        let uniqueId = service.uniqueId()
-        XCTAssert(uniqueId == "123", "Unique id not returned")
-    }
-    
-    func testGetUniqueId() {
-        let exp = expectation(description: "UniqueID generation by client")
-        service.getUniqueId { (id) in
-            if id != nil {
-                exp.fulfill()
-            }
-        }
-        wait(for: [exp], timeout: 1)
-    }
-    
     func testSampleCloudFunction() {
         let exp = expectation(description: "UniqueID retrieved from cloud")
-        service.cloudFunction(functionName: "sampleCloudFunction") { (result, error) in
+        service.cloudFunction(functionName: "helloWorld") { (result, error) in
             print("Result \(String(describing: result)) error \(String(describing: error))")
             exp.fulfill()
         }
