@@ -24,6 +24,7 @@ class DemoViewController: UIViewController {
     // Login view
     @IBOutlet weak var labelLoginInfo: UILabel!
     @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var buttonSignup: UIButton!
     @IBOutlet weak var inputUsername: UITextField!
     @IBOutlet weak var inputPassword: UITextField!
 
@@ -81,6 +82,10 @@ class DemoViewController: UIViewController {
         doLogin()
     }
 
+    @IBAction func didClickSignup(_ sender: UIButton) {
+        doSignup()
+    }
+
     // MARK: - Private Functions
 
     private func doCloudFunction() {
@@ -121,6 +126,8 @@ class DemoViewController: UIViewController {
         }
     }
 
+    /// Demo login function using email and password
+    /// To test signup failure for an existing user, call doSignup on button click
     private func doLogin() {
         guard let username = inputUsername.text, !username.isEmpty else {
             authMessage("Invalid username!")
@@ -133,11 +140,34 @@ class DemoViewController: UIViewController {
 
         Task {
             do {
-                let user = try await authService?.login(username: username, password: password)
+                _ = try await authService?.login(username: username, password: password)
             } catch let error as RenderAuthError {
                 authMessage("Auth error: \(error)")
             } catch {
                 authMessage("Login error: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    /// Demo signup function using email and password
+    /// This happens if login fails
+    private func doSignup() {
+        guard let username = inputUsername.text, !username.isEmpty else {
+            authMessage("Invalid username!")
+            return
+        }
+        guard let password = inputPassword.text, !password.isEmpty else {
+            authMessage("Invalid password!")
+            return
+        }
+
+        Task {
+            do {
+                _ = try await authService?.signup(username: username, password: password)
+            } catch let error as RenderAuthError {
+                authMessage("Auth error: \(error)")
+            } catch {
+                authMessage("Signup error: \(error.localizedDescription)")
             }
         }
     }
@@ -150,11 +180,16 @@ extension DemoViewController: CloudAuthServiceDelegate {
             buttonLogin.setTitle("Log out", for: .normal)
             inputUsername.text = nil
             inputPassword.text = nil
+
+            buttonSignup.isEnabled = false
         } else {
             labelLoginInfo.text = "Logged out"
             buttonLogin.setTitle("Log in", for: .normal)
-            inputUsername.text = user?.username
+            inputUsername.text = self.user?.username
+
+            buttonSignup.isEnabled = true
         }
+        print("Setting user to \(user?.username)")
         self.user = user
     }
 }

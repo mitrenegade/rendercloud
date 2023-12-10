@@ -8,8 +8,10 @@
 import Foundation
 
 public enum RenderAuthError: Error {
-    case invalidCredentials
+    case loginInvalidCredentials
+    case signupUserExists
     case invalidEmailFormat
+    case signupInvalidPasswordFormat
 }
 
 public protocol CloudAuthServiceDelegate: AnyObject {

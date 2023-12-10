@@ -51,8 +51,7 @@ public final class RenderAuthService: CloudAuthService {
             let result = try await auth.createUser(withEmail: username, password: password)
             return result.user
         } catch {
-            print("error \(error)")
-            throw error
+            throw handleAuthError(error)
         }
     }
 
@@ -62,16 +61,26 @@ public final class RenderAuthService: CloudAuthService {
         do {
             let result = try await auth.signIn(withEmail: username, password: password)
             return result.user
-        } catch let error as NSError {
-            print("error \(error)")
-            switch error.code {
-            case 17004:
-                throw RenderAuthError.invalidCredentials
-            case 17008:
-                throw RenderAuthError.invalidEmailFormat
-            default:
-                throw error
-            }
+        } catch {
+            throw handleAuthError(error)
+        }
+    }
+
+    private func handleAuthError(_ error: Error) -> Error {
+        print("error \(error)")
+        let nsError = error as NSError
+        switch nsError.code {
+        case 17004:
+            return RenderAuthError.loginInvalidCredentials
+        case 17007:
+            return RenderAuthError.signupUserExists
+        case 17008:
+            return RenderAuthError.invalidEmailFormat
+        case 17026:
+            return RenderAuthError.signupInvalidPasswordFormat
+        default:
+            // any other Error falls through
+            return error
         }
     }
 

@@ -58,26 +58,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V7W-dD-0fs">
-                                <rect key="frame" x="24" y="276" width="327" height="102.5"/>
+                                <rect key="frame" x="24" y="276" width="327" height="123"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWc-IO-aif">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="34.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login info" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4B9-vz-YUs">
-                                                <rect key="frame" x="0.0" y="0.0" width="247" height="34.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9Y-iw-Mgz">
-                                                <rect key="frame" x="247" y="0.0" width="80" height="34.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="4oa-H7-RBm"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="34.5"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                                 <connections>
                                                     <action selector="didClickLogin:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qEm-dP-2HZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVL-zF-kMh">
+                                                <rect key="frame" x="163.5" y="0.0" width="163.5" height="34.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Signup"/>
+                                                <connections>
+                                                    <action selector="didClickSignup:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dWL-g6-ltM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -92,6 +91,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login info" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4B9-vz-YUs">
+                                        <rect key="frame" x="0.0" y="102.5" width="327" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -122,6 +127,7 @@
                         <outlet property="buttonCloud" destination="onH-FI-hD7" id="ar2-ta-wEC"/>
                         <outlet property="buttonLogin" destination="F9Y-iw-Mgz" id="NQB-1c-3mQ"/>
                         <outlet property="buttonRef" destination="oJg-E3-jvp" id="3SR-j8-btj"/>
+                        <outlet property="buttonSignup" destination="xVL-zF-kMh" id="2Qq-LB-v3s"/>
                         <outlet property="inputPassword" destination="JMu-v0-dIl" id="j6L-om-lxL"/>
                         <outlet property="inputUsername" destination="LUi-Jt-Bf2" id="hE5-Tt-0cL"/>
                         <outlet property="labelCloud" destination="ks8-cK-BaL" id="SQV-dB-Qpc"/>
