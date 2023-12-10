@@ -12,8 +12,17 @@ public protocol CloudAuthServiceDelegate: AnyObject {
 }
 
 public protocol CloudAuthService {
-    func signUp(username: String, password: String)
-    func logIn(username: String, password: String)
+    /// Awaits completion of signup and returns a User
+    /// Throws an NSError on failure
+    func signup(username: String, password: String) async throws -> User
+
+    /// Awaits completion of login and returns a User
+    /// Throws an NSError on failure
+    func login(username: String, password: String) async throws -> User
+
+    /// Awaits completion of logout
+    /// Throws an NSError on failure
+    func logout() throws
 
     var delegate: CloudAuthServiceDelegate? { get }
 }

@@ -44,37 +44,47 @@ public final class RenderAuthService: CloudAuthService {
 
     // Async/Await
 
-    func signUp(username: String, password: String) async throws -> AuthDataResult {
+    /// Awaits signup and returns a User for synchronous signup processes
+    /// Throws an NSError on failure
+    public func signup(username: String, password: String) async throws -> User {
         do {
             let result = try await auth.createUser(withEmail: username, password: password)
-            return result
+            return result.user
         } catch {
             print("error \(error)")
             throw error
         }
     }
 
-    func logIn(username: String, password: String) async throws -> AuthDataResult {
+    /// Awaits login and returns a User for synchronous login processes
+    /// Throws an NSError on failure
+    public func login(username: String, password: String) async throws -> User {
         do {
             let result = try await auth.signIn(withEmail: username, password: password)
-            return result
+            return result.user
         } catch {
             print("error \(error)")
             throw error
         }
+    }
+
+    /// Asynchronous logout. 
+    /// Throws an NSError on failure
+    /// Do we need an await logout?
+    public func logout() throws {
+        try auth.signOut()
     }
 
     // Closure
-
-    public func signUp(username: String, password: String) {
-        auth.createUser(withEmail: username, password: password) { result, error in
-            print("result \(result) error \(error)")
-        }
-    }
-
-    public func logIn(username: String, password: String) {
-        auth.signIn(withEmail: username, password: password) { result, error in
-            print("result \(result) error \(error)")
-        }
-    }
+//    public func signup(username: String, password: String) {
+//        auth.createUser(withEmail: username, password: password) { result, error in
+//            print("result \(result) error \(error)")
+//        }
+//    }
+//
+//    public func login(username: String, password: String) {
+//        auth.signIn(withEmail: username, password: password) { result, error in
+//            print("result \(result) error \(error)")
+//        }
+//    }
 }

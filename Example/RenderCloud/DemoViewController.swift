@@ -8,7 +8,6 @@
 
 import UIKit
 import RenderCloud
-import FirebaseAuth
 import FirebaseDatabase
 
 class DemoViewController: UIViewController {
@@ -30,7 +29,9 @@ class DemoViewController: UIViewController {
 
     var apiService: (CloudAPIService & CloudDatabaseService)?
 
-    lazy var authService: CloudAuthService = RenderAuthService(delegate: self)
+    var authService: CloudAuthService?
+
+    private var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,8 @@ class DemoViewController: UIViewController {
         
         labelCloud.text = "Click to call a cloud function"
         labelCloud.text = "Click to load from database"
+
+        authService = RenderAuthService(delegate: self)
     }
     
     // MARK: - IBActions
@@ -69,6 +72,13 @@ class DemoViewController: UIViewController {
 
     @IBAction func didClickLogin(_ sender: UIButton) {
         // login/logout
+        guard user == nil else {
+            // logout
+            doLogout()
+            return
+        }
+
+        doLogin()
     }
 
     // MARK: - Private Functions
@@ -97,10 +107,52 @@ class DemoViewController: UIViewController {
             self?.labelRef.text = "\(snapshot.value!)"
         })
     }
+
+    // MARK: - Auth
+    private func authMessage(_ string: String) {
+        labelLoginInfo.text = string
+    }
+
+    private func doLogout() {
+        do {
+            try authService?.logout()
+        } catch {
+            print("Logout error")
+        }
+    }
+
+    private func doLogin() {
+        guard let username = inputUsername.text, !username.isEmpty else {
+            authMessage("Invalid username!")
+            return
+        }
+        guard let password = inputPassword.text, !password.isEmpty else {
+            authMessage("Invalid password!")
+            return
+        }
+
+        Task {
+            do {
+                let user = try await authService?.login(username: username, password: password)
+            } catch {
+                authMessage("Login error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 extension DemoViewController: CloudAuthServiceDelegate {
     func userDidChange(user: RenderCloud.User?) {
-        print("User changed \(user)")
+        if let user {
+            labelLoginInfo.text = "Logged in as \(user.username)"
+            buttonLogin.setTitle("Log out", for: .normal)
+            inputUsername.text = nil
+            inputPassword.text = nil
+        } else {
+            labelLoginInfo.text = "Logged out"
+            buttonLogin.setTitle("Log in", for: .normal)
+            inputUsername.text = user?.username
+        }
+        self.user = user
     }
 }
