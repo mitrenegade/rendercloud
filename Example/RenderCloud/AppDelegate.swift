@@ -8,7 +8,7 @@
 
 import UIKit
 import RenderCloud
-import Firebase
+import FirebaseCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

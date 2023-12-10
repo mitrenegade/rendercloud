@@ -20,6 +20,13 @@ In [https://https://console.firebase.google.com/]Firebase, create a new project,
 
 and adding an iOS app. Store the file `GoogleService-Info.plist` in the project folder.
 
+### Authentication
+
+Authentication is done through FirebaseAuth. You must enable email login in the Firebase Console, on the side bar:
+
+Go to Firebase console -> Product Categories -> Build -> Authentication
+Enable Email sign in under Native providers
+
 ### Cloud Code
 
 To use the included cloud API, Firebase Admin and functions must be enabled for your firebase project.

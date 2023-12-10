@@ -24,6 +24,9 @@ exports.helloWorld = onCall((request, response) => {
 
 // HTTP request for sign up
 // Parameters: email, password
+// TODO: signUp and login should be done via FirebaseAuth so that pw is not sent plaintext
+// cloud functions can be used for non-sensitive data
+// signup function maybe used by admin to create new users rather than client app
 exports.signUp = onCall((req, res) => {
   const email = req.data.email;
   const password = req.data.password;
